@@ -22,3 +22,4 @@
 ### Pomodoro 🍅 1
 - User story #1 🚧
   - Scenario #1 - update
+  - Scenario #1 📝 - metrics update
