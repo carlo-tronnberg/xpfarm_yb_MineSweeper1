@@ -19,3 +19,6 @@
 ## Progress
 
 ### Pomodoro 🍅 1
+### Pomodoro 🍅 1
+- User story #1 🚧
+  - Scenario #1 - update
