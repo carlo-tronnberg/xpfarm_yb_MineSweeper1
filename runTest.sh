@@ -1,0 +1,1 @@
+npm test -- --watchAll --collect-coverage --verbose

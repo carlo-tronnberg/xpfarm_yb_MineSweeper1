@@ -1,0 +1,49 @@
+#!/bin/bash
+npm test -- --json --outputFile="test-report.json" --coverage --coverageReporters="json-summary"
+npm run complexity -- -o complexity-report.json -f json
+npm run complexity
+
+node << EOS > metrics.md
+const marker = (success) => success ? '✅' : '❌';
+const test = require('./test-report.json');
+const coverage = require('./coverage/coverage-summary.json');
+const complexity = require('./complexity-report.json');
+const testResultMarker = marker(test.success);
+let testResult;
+if (test.success) {
+  testResult = 'SUCCESS';
+} else {
+  testResult = 'FAILURE';
+}
+let coverageSuccess = true;
+let coverageTable = '';
+for (let type of ['lines','statements','functions','branches']) {
+  const typeSummary = coverage.total[type];
+  const total = typeSummary.total;
+  const covered = typeSummary.covered;
+  const skipped = typeSummary.skipped;
+  const percentage = typeSummary.pct.toFixed(2);
+  coverageSuccess &= percentage == 100;
+  coverageTable += \`| \${type} | \${total} | \${covered} | \${skipped} | \${percentage}% |\n\`;
+}
+const coverageMarker = marker(coverageSuccess);
+const complexityMarker = marker(complexity.cyclomatic <= 4);
+console.log(\`\
+# Repo Metrics\n\
+## Tests \${testResultMarker}\n\
+Result: \${testResult}\n\n\
+Failed tests: \${test.numFailedTests}\n\n\
+Passed tests: \${test.numPassedTests}\n\n\
+## Coverage \${coverageMarker}\n\
+| Type | Total | Covered | Skipped | Percentage |\n\
+|------|------:|--------:|--------:|------------|\n\
+\${coverageTable}\n\
+## Complexity \${complexityMarker}\n\
+Cyclomatic complexity: \${complexity.cyclomatic}\n\n\
+[Full report](complexity-report.md)\n\n\
+\n\
+\`);
+EOS
+
+rm test-report.json
+rm complexity-report.json

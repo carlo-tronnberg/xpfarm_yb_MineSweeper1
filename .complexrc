@@ -1,0 +1,16 @@
+{
+    "output": "complexity-report.md",
+    "format": "markdown",
+    "allfiles": false,
+    "ignoreerrors": true,
+    "filepattern": "(.(?<!\\.test))\\.js$",
+    "dirpattern": ".+",
+    "maxfiles": 256,
+    "maxcyc": 4,
+    "silent": false,
+    "logicalor": false,
+    "switchcase": false,
+    "forin": false,
+    "trycatch": false,
+    "newmi": false
+}
