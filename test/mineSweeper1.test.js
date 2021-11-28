@@ -49,46 +49,30 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
     });
 
     it('Given a Game Board width 3 and height 3,    When starting the game,    Then I want to create the empty Game Board and get it back as a string', () => {
-      let width = 3;
-      let height = 3;
       let gameBoardString =
         '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+';
-      const game = new Game(width, height);
+      const game = new Game(3, 3);
       expect(game.drawGameBoard()).toEqual(gameBoardString);
     });
   });
 });
 
 describe('US2 Game Over - Lose the game by stepping on a bomb', () => {
-  it('Given the 3x3 Game Board,  When stepping on a square without a bomb,  Then the game with continue', () => {
-    let width = 3;
-    let height = 3;
-    let bombBoard = [
-      [0, 0, 0],
-      [1, 1, 0],
-      [0, 1, 0],
-    ];
-    let gameBoardString =
-      '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+';
-    const game = new Game(width, height);
-    game.setBombs(bombBoard);
-    game.stepOnSquare(0, 0);
-    expect(game.stepOnSquare(0, 0)).toEqual(SQUARE_CLEAR);
-    expect(game.getStatus()).toEqual(GAME_RUNNING);
-  });
-  it('Given the 3x3 Game Board,  When stepping on a square with a bomb,  Then it will be Game Over', () => {
-    let width = 3;
-    let height = 3;
-    let bombBoard = [
-      [0, 0, 0],
-      [1, 1, 0],
-      [0, 1, 0],
-    ];
-    let gameBoardString =
-      '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+';
-    const game = new Game(width, height);
-    game.setBombs(bombBoard);
-    expect(game.stepOnSquare(1, 1)).toEqual(STEPPED_ON_BOMB);
-    //expect(game.getStatus()).toEqual(GAME_OVER);
-  });
+  it.each([
+    [0, 0, GAME_RUNNING],
+    [1, 1, GAME_OVER],
+  ])(
+    'Given the 3x3 Game Board,  When stepping on a square without a bomb (%i,%i),  Then the game will be %s',
+    (x, y, status) => {
+      const game = new Game(3, 3);
+      game.setBombs([
+        [0, 0, 0],
+        [1, 1, 0],
+        [0, 1, 0],
+      ]);
+      game.stepOnSquare(x, y);
+      // expect(game.stepOnSquare(0, 0)).toEqual(SQUARE_CLEAR);
+      expect(game.getStatus()).toEqual(status);
+    }
+  );
 });
