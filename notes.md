@@ -38,12 +38,13 @@
   - Scenario #3 🔴 - get Game Board drawn as a formatted string
   - Scenario #3 🟢
 - User story #2 🚧
+
 ### Pomodoro 🍅 2
+
 - User story #2 🚧
   - Scenario #1 🔴 - Stepping on a clear square
   - Scenario #1 🟢
-  - Scenario #1 🔴 - Added Status check test
-  - Scenario #1 🟢
-  - Scenario #1 🔴 - Stepping on bomb
-  - Scenario #1 🟢
+  - Scenario #1 🔨
   - Scenario #1 🔨 - Refactored test
+  - Scenario #2 🔴 - Stepping on bomb
+  - Scenario #2 🟢
