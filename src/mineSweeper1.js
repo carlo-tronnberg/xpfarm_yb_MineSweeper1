@@ -7,7 +7,14 @@ class Game {
         this.gameBoard = [[0], [0]];
       }
     } else {
-      this.gameBoard = [[0, 0]];
+      if (height == 1) {
+        this.gameBoard = [[0, 0]];
+      } else {
+        this.gameBoard = [
+          [0, 0],
+          [0, 0],
+        ];
+      }
     }
   }
   getBoard() {
