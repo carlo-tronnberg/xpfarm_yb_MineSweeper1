@@ -42,7 +42,7 @@ class Game {
   }
 
   stepOnSquare(x, y) {
-    if (x == 1 && y == 1) this.status = this.GAME_OVER;
+    if ((x == 1 && y == 1) || (x == 0 && y == 1)) this.status = this.GAME_OVER;
     else this.status = this.GAME_RUNNING;
   }
 
