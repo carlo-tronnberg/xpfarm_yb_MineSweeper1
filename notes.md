@@ -32,5 +32,7 @@
   - Scenario #1 🟢
   - Scenario #1 🔨
   - Scenario #1 🟢 - 3x3
-  - Scenario #1 🔴 - 3x3 with bombs
-  - Scenario #1 🟢
+  - Scenario #2 🔴 - 3x3 with bombs
+  - Scenario #2 🟢
+- User story #2 🚧
+  - Scenario #1 🔨 - break out createGameBoard function
