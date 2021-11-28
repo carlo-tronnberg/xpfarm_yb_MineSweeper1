@@ -5,6 +5,7 @@ class Game {
   GAME_OVER = 'Game Over';
 
   constructor(width, height) {
+    this.status = 'running';
     this.createGameBoard(width, height);
   }
 
@@ -42,6 +43,10 @@ class Game {
 
   stepOnSquare(x, y) {
     return this.SQUARE_CLEAR;
+  }
+
+  getStatus() {
+    return this.status;
   }
 }
 module.exports = { Game };
