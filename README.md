@@ -83,6 +83,22 @@ So that I play the game
   Then I want to create the empty Game Board and get it back as a string
 ```
 
+### User story #2 - Allow stepping into a square
+
+```
+As a gamer
+I want to be able to step into a virgin square
+So that I can make a step
+```
+
+#### Scenario #1
+
+```
+  Given the Game Board
+  When stepping on a square
+  Then the game should know whether I am allowed to do so
+```
+
 ### User story #2 - Game Over - Lose the game by stepping on a bomb
 
 ```
@@ -95,11 +111,19 @@ So that I can try again with a new game
 
 ```
   Given the Game Board
+  When stepping on a square
+  Then the game should know whether I am allowed to do so
+```
+
+#### Scenario #2
+
+```
+  Given the Game Board
   When stepping on a square without a bomb
   Then the game with continue
 ```
 
-#### Scenario #2
+#### Scenario #3
 
 ```
   Given the Game Board
