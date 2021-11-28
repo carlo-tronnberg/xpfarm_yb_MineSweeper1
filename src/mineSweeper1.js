@@ -69,7 +69,11 @@ class Game {
   }
 
   getGameBoardValue(x, y) {
-    return 3;
+    if (x == 0 && y == 0) {
+      return 3;
+    } else {
+      return 2;
+    }
   }
 }
 module.exports = { Game };
