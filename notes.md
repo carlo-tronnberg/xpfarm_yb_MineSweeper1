@@ -80,3 +80,5 @@
   - Scenario #1 🔴 - Game Victory
   - Scenario #1 🟢
   - Scenario #1 🔨
+- User story #7 🚧
+  - Scenario #1 🔴 - Massive cleaning and victory
