@@ -34,5 +34,5 @@
   - Scenario #1 🟢 - 3x3
   - Scenario #2 🔴 - 3x3 with bombs
   - Scenario #2 🟢
-- User story #2 🚧
-  - Scenario #1 🔨 - break out createGameBoard function
+  - Scenario #2 🔨 - break out createGameBoard function
+  - Scenario #3 🔴 - get Game Board drawn as a formatted string
