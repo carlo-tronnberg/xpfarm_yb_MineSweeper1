@@ -61,7 +61,8 @@ class Game {
       this.setSquareValue(x, y, 'X');
       message = 'BOOM! - Game Over';
     } else {
-      this.setSquareValue(x, y, this.getNeighbouringBombsCount(x, y));
+      this.startRecursiveCheck(x, y);
+      //this.setSquareValue(x, y, this.getNeighbouringBombsCount(x, y));
       if (this.winner()) {
         this.showBombs();
         this.status = this.GAME_WIN;
@@ -107,6 +108,33 @@ class Game {
     count += this.getBombAt(x + 1, y + 1);
     if (count == 0) count = '_';
     return count;
+  }
+
+  startRecursiveCheck(x, y) {
+    this.checkedBoard = Array(this.gameBoard.length)
+      .fill()
+      .map(() => Array(this.gameBoard[0].length).fill(false));
+    // Recursive call
+    this.checkNeighboringSquares(x, y);
+  }
+
+  checkNeighboringSquares(x, y) {
+    if (
+      this.valueIsBetween(x, 0, this.gameBoard[0].length - 1) &&
+      this.valueIsBetween(y, 0, this.gameBoard.length - 1) &&
+      this.getBombAt(x, y) == 0 &&
+      this.checkedBoard[this.gameBoard[0].length - 1 - y][x] == false
+    ) {
+      this.setSquareValue(x, y, this.getNeighbouringBombsCount(x, y));
+      this.checkedBoard[this.gameBoard[0].length - 1 - y][x] = true;
+      this.checkNeighboringSquares(x - 1, y);
+      this.checkNeighboringSquares(x - 1, y + 1);
+      this.checkNeighboringSquares(x, y - 1);
+      this.checkNeighboringSquares(x, y + 1);
+      this.checkNeighboringSquares(x + 1, y - 1);
+      this.checkNeighboringSquares(x + 1, y);
+      this.checkNeighboringSquares(x + 1, y + 1);
+    }
   }
 
   setSquareValue(x, y, value) {
