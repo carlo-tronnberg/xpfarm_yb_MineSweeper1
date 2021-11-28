@@ -7,5 +7,11 @@ class Game {
   getBoard() {
     return this.gameBoard;
   }
+  setBombs(bombBoard) {
+    this.bombBoard = bombBoard;
+  }
+  getBombs() {
+    return this.bombBoard;
+  }
 }
 module.exports = { Game };
