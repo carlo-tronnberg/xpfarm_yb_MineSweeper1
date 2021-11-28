@@ -26,7 +26,16 @@ class Game {
       .fill()
       .map(() => Array(width).fill(0));
     console.log(this.drawGameBoard());
-    console.log('[Sandbox ' + width + 'x' + height + '] Game created');
+    this.log('Game created');
+  }
+
+  log(message) {
+    console.log(
+      '[Sandbox %ix%i] %s',
+      this.gameBoard[0].length,
+      this.gameBoard.length,
+      message
+    );
   }
   drawGameBoard() {
     let gameBoardString = '';
@@ -42,10 +51,13 @@ class Game {
   }
 
   stepOnSquare(x, y) {
-    console.log('x: %i, y:%i, bomb? %i', x, y, this.getBombAt(x, y));
     if (this.getBombAt(x, y) == 1) {
       this.status = this.GAME_OVER;
-    } else this.status = this.GAME_RUNNING;
+      this.log('BOOM! - Game Over');
+    } else {
+      this.status = this.GAME_RUNNING;
+      this.log('No bomb here!');
+    }
   }
 
   getStatus() {

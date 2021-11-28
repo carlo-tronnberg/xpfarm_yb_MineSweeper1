@@ -62,17 +62,17 @@ describe('US2 Game Over - Lose the game by stepping on a bomb', () => {
     [0, 0, GAME_RUNNING],
     [1, 1, GAME_OVER],
     [0, 1, GAME_OVER],
+    [0, 2, GAME_RUNNING],
   ])(
     'Given the 3x3 Game Board,  When stepping on a square without a bomb (%i,%i),  Then the game will be %s',
     (x, y, status) => {
       const game = new Game(3, 3);
       game.setBombs([
-        [0, 0, 0],
-        [1, 1, 0],
-        [0, 1, 0],
+        [0, 0, 0], // ▲
+        [1, 1, 0], // |
+        [0, 1, 0], //  ——▶
       ]);
       game.stepOnSquare(x, y);
-      // expect(game.stepOnSquare(0, 0)).toEqual(SQUARE_CLEAR);
       expect(game.getStatus()).toEqual(status);
     }
   );
