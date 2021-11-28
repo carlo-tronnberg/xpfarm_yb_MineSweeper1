@@ -154,4 +154,17 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
       expect(game.getStatus()).toEqual(GAME_WIN);
     });
   });
+
+  describe('US7 Massive cleaning and victory', () => {
+    it('Given the Game Board,     When stepping on a clear square with no neighboring bombs,    Then all neighboring squares with no bombs shall be cleared', () => {
+      const game = new Game(3, 3);
+      game.setBombs([
+        [0, 0, 1],
+        [0, 0, 0],
+        [0, 0, 0],
+      ]);
+      game.stepOnSquare(0, 0);
+      expect(game.getStatus()).toEqual(GAME_WIN);
+    });
+  });
 });
