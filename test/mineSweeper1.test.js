@@ -61,6 +61,7 @@ describe('US2 Game Over - Lose the game by stepping on a bomb', () => {
   it.each([
     [0, 0, GAME_RUNNING],
     [1, 1, GAME_OVER],
+    [0, 1, GAME_OVER],
   ])(
     'Given the 3x3 Game Board,  When stepping on a square without a bomb (%i,%i),  Then the game will be %s',
     (x, y, status) => {
