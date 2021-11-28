@@ -3,6 +3,7 @@ const STEPPED_ON_BOMB = 'X';
 const SQUARE_CLEAR = ' ';
 const GAME_RUNNING = 'running';
 const GAME_OVER = 'Game Over';
+const GAME_WIN = 'You Win';
 
 describe("I want to play a game of Mine Sweeper where I'll win if I clear the board without stepping on a bomb", () => {
   describe('US1 Game Board Creation', () => {
@@ -91,7 +92,7 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
     );
   });
 
-  describe('US3 Get the number of neighbouring bombs when stepping on a clean square', () => {
+  describe('US4 Get the number of neighbouring bombs when stepping on a clean square', () => {
     it.each([
       [0, 0, 3],
       [0, 3, 2],
@@ -114,7 +115,7 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
     );
   });
 
-  describe('US4 Mark the bombs around', () => {
+  describe('US5 Mark the bombs around', () => {
     it.each([[1, 0]])(
       "Given the Game Board,      When identifying a potential bomb square (%1,%1),      Then I want to be able to mark it with a '*'",
       (x, y) => {
@@ -129,5 +130,23 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
         expect(game.getSquareValue(x, y)).toBe('*');
       }
     );
+  });
+
+  describe('US6 Game Victory', () => {
+    it('Given the Game Board,    When stepping on the last bomb-free square,    Then I want to win the Game', () => {
+      const game = new Game(3, 3);
+      game.setBombs([
+        [0, 0, 0],
+        [1, 1, 0],
+        [0, 1, 0],
+      ]);
+      game.stepOnSquare(0, 0);
+      game.stepOnSquare(0, 2);
+      game.stepOnSquare(1, 2);
+      game.stepOnSquare(2, 0);
+      game.stepOnSquare(2, 1);
+      game.stepOnSquare(2, 2);
+      expect(game.getStatus()).toEqual(GAME_WIN);
+    });
   });
 });
