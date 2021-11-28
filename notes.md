@@ -24,3 +24,4 @@
   - Scenario #1 📝 - Created User Stories and Scenarios
   - Scenario #1 🔴
   - Scenario #1 🟢
+  - Scenario #1 🔴
