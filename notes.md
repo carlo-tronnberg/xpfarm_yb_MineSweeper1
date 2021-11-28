@@ -78,3 +78,4 @@
   - Scenario #1 🔨
 - User story #6 🚧
   - Scenario #1 🔴 - Game Victory
+  - Scenario #1 🟢
