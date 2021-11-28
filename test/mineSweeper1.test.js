@@ -74,5 +74,6 @@ describe('US2 Game Over - Lose the game by stepping on a bomb', () => {
     game.setBombs(bombBoard);
     game.stepOnSquare(0, 0);
     expect(game.stepOnSquare(0, 0)).toEqual(SQUARE_CLEAR);
+    expect(game.getStatus()).toEqual(GAME_RUNNING);
   });
 });
