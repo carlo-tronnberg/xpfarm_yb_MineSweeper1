@@ -1,4 +1,9 @@
 class Game {
+  STEPPED_ON_BOMB = 'X';
+  SQUARE_CLEAR = ' ';
+  GAME_RUNNING = 'running';
+  GAME_OVER = 'Game Over';
+
   constructor(width, height) {
     this.createGameBoard(width, height);
   }
@@ -33,6 +38,10 @@ class Game {
     }
     gameBoardString += '+-'.repeat(this.gameBoard[0].length) + '+';
     return gameBoardString;
+  }
+
+  stepOnSquare(x, y) {
+    return this.SQUARE_CLEAR;
   }
 }
 module.exports = { Game };
