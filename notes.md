@@ -56,3 +56,4 @@
   - Scenario #1 🔴 - Get neighboring bombs count
   - Scenario #1 🟢
   - Scenario #2 🔴 - [0,3]
+  - Scenario #2 🟢
