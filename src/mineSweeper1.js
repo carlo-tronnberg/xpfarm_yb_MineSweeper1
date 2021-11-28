@@ -42,12 +42,18 @@ class Game {
   }
 
   stepOnSquare(x, y) {
-    if ((x == 1 && y == 1) || (x == 0 && y == 1)) this.status = this.GAME_OVER;
-    else this.status = this.GAME_RUNNING;
+    console.log('x: %i, y:%i, bomb? %i', x, y, this.getBombAt(x, y));
+    if (this.getBombAt(x, y) == 1) {
+      this.status = this.GAME_OVER;
+    } else this.status = this.GAME_RUNNING;
   }
 
   getStatus() {
     return this.status;
+  }
+
+  getBombAt(x, y) {
+    return this.bombBoard[this.bombBoard[0].length - 1 - y][x];
   }
 }
 module.exports = { Game };
