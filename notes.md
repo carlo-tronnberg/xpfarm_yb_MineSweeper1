@@ -32,3 +32,4 @@
   - Scenario #1 🟢
   - Scenario #1 🔨
   - Scenario #1 🟢 - 3x3
+  - Scenario #1 🔴 - 3x3 with bombs
