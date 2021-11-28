@@ -22,8 +22,9 @@
 
 - User story #1 🚧
   - Scenario #1 📝 - Created User Stories and Scenarios
-  - Scenario #1 🔴
+  - Scenario #1 🔴 - 1x1
   - Scenario #1 🟢
-  - Scenario #1 🔴
+  - Scenario #1 🔴 - 1x2
   - Scenario #1 🟢
-  - Scenario #1 🔴
+  - Scenario #1 🔴 - 2x1
+  - Scenario #1 🟢
