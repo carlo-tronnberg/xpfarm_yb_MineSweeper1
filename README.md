@@ -49,7 +49,7 @@ npm test -- --watchAll --collect-coverage --verbose
 
 ## UAT Scenario
 
-As a gamer, I want to play a game of Mine Sweeper where I'll win I clear the board without stepping on a bomb.
+As a gamer, I want to play a game of Mine Sweeper where I'll win if I clear the board without stepping on a bomb.
 
 ### User story #1 - Game Board Creation
 
