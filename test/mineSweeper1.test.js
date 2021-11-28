@@ -76,6 +76,7 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
       }
     );
   });
+
   describe('US3 Get the number of neighbouring bombs when stepping on a clean square', () => {
     it.each([
       [0, 0, 3],
@@ -95,6 +96,23 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
         ]);
         game.stepOnSquare(x, y);
         expect(game.getSquareValue(x, y)).toBe(count);
+      }
+    );
+  });
+
+  describe('US4 Mark the bombs around', () => {
+    it.each([[1, 0]])(
+      "Given the Game Board,      When identifying a potential bomb square (%1,%1),      Then I want to be able to mark it with a '*'",
+      (x, y) => {
+        const game = new Game(4, 4);
+        game.setBombs([
+          [0, 0, 0, 0],
+          [1, 1, 0, 0],
+          [1, 1, 0, 0],
+          [0, 1, 0, 1],
+        ]);
+        game.markBomb(x, y);
+        expect(game.getSquareValue(x, y)).toBe('*');
       }
     );
   });
