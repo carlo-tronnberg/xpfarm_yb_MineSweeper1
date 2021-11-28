@@ -51,3 +51,4 @@
   - Scenario #2 🔴 - Stepping on [0,1]
   - Scenario #2 🟢
   - Scenario #2 🔨
+  - Scenario #2 🔨
