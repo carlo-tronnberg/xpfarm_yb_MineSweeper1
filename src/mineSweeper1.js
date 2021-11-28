@@ -42,7 +42,8 @@ class Game {
   }
 
   stepOnSquare(x, y) {
-    return this.SQUARE_CLEAR;
+    if (x == 1 && y == 1) return this.STEPPED_ON_BOMB;
+    else return this.SQUARE_CLEAR;
   }
 
   getStatus() {
