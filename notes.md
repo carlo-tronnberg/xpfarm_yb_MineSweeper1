@@ -67,3 +67,4 @@
 ### Pomodoro 🍅 3
 - User story #4 🚧
   - Scenario #1 🔴
+  - Scenario #1 🔴 - Mark bombs
