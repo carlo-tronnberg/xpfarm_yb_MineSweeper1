@@ -46,3 +46,4 @@
   - Scenario #1 🟢
   - Scenario #1 🔴 - Stepping on bomb
   - Scenario #1 🟢
+  - Scenario #1 🔨 - Refactored test
