@@ -1,6 +1,4 @@
 class Game {
-  STEPPED_ON_BOMB = 'X';
-  SQUARE_CLEAR = ' ';
   GAME_RUNNING = 'running';
   GAME_OVER = 'Game Over';
   GAME_WIN = 'You Win';
@@ -56,29 +54,27 @@ class Game {
   }
 
   stepOnSquare(x, y) {
+    //if (!this.allowOperation(x, y)) return;
     var message = '';
-    if (this.allowOperation(x, y)) {
-      if (this.getBombAt(x, y) == 1) {
-        this.status = this.GAME_OVER;
-        this.setSquareValue(x, y, 'X');
-        message = 'BOOM! - Game Over';
-      } else {
-        let value = this.getNeighbouringBombsCount(x, y);
-        this.setSquareValue(x, y, value == 0 ? '_' : value);
-        if (this.winner()) {
-          this.showBombs();
-          this.status = this.GAME_WIN;
-          message = 'the land is cleared! GOOD JOB!';
-        } else {
-          this.status = this.GAME_RUNNING;
-          message = this.getSquareValue(x, y) + ' bomb(s) around your square.';
-        }
-      }
+    if (this.getBombAt(x, y) == 1) {
+      this.status = this.GAME_OVER;
+      this.setSquareValue(x, y, 'X');
+      message = 'BOOM! - Game Over';
     } else {
-      message = 'This square is already set and cannot be changed';
+      this.setSquareValue(x, y, this.getNeighbouringBombsCount(x, y));
+      if (this.winner()) {
+        this.showBombs();
+        this.status = this.GAME_WIN;
+        message = 'the land is cleared! GOOD JOB!';
+      } else {
+        this.status = this.GAME_RUNNING;
+        message = this.getSquareValue(x, y) + ' bomb(s) around your square.';
+      }
     }
     this.log(message);
   }
+
+  check;
 
   getStatus() {
     return this.status;
@@ -109,7 +105,7 @@ class Game {
     count += this.getBombAt(x + 1, y - 1);
     count += this.getBombAt(x + 1, y);
     count += this.getBombAt(x + 1, y + 1);
-
+    if (count == 0) count = '_';
     return count;
   }
 
@@ -133,17 +129,20 @@ class Game {
   }
 
   winner() {
-    // If there no more blanks, then you're the winner
     var isWinner = true;
-    for (var i = 0; i < this.gameBoard.length; i++) {
-      for (var j = 0; j < this.gameBoard[0].length; j++) {
-        if (this.gameBoard[i][j] == ' ' && this.bombBoard[i][j] != 1) {
+
+    this.gameBoard.forEach((row, i) => {
+      row.forEach((square, j) => {
+        if (this.squareIsSet(i, j)) {
           isWinner = false;
-          break;
         }
-      }
-    }
+      });
+    });
     return isWinner;
+  }
+
+  squareIsSet(i, j) {
+    return this.gameBoard[i][j] == ' ' && this.bombBoard[i][j] != 1;
   }
 
   showBombs() {

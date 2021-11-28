@@ -1,6 +1,4 @@
 const { Game } = require('../src/mineSweeper1');
-const STEPPED_ON_BOMB = 'X';
-const SQUARE_CLEAR = ' ';
 const GAME_RUNNING = 'running';
 const GAME_OVER = 'Game Over';
 const GAME_WIN = 'You Win';
