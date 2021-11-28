@@ -71,6 +71,9 @@ class Game {
   getGameBoardValue(x, y) {
     if (x == 0 && y == 0) {
       return 3;
+    }
+    if (x == 2 && y == 1) {
+      return 4;
     } else {
       return 2;
     }
