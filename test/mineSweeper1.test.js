@@ -81,6 +81,8 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
       [0, 0, 3],
       [0, 3, 2],
       [2, 1, 4],
+      [2, 3, 1],
+      [3, 3, 0],
     ])(
       'Given the Game Board,    When stepping on a square without a bomb (%i,%i) but having neighboring bomb(s),    Then I should get the count of %i neighboring bombs in the square',
       (x, y, count) => {
