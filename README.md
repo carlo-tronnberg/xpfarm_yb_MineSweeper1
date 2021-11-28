@@ -115,7 +115,7 @@ I want to know how many bombs are around me
 So that I can try to avoid them
 ```
 
-#### Scenario #1
+#### Scenarios #1-5
 
 ```
   Given the Game Board
@@ -130,11 +130,11 @@ So that I can try to avoid them
       [0, 1, 0, 1],
     ]
 
-    - Step on (0,0) -> 3 neighbours
-    - Step on (0,3) -> 2 neighbours
-    - Step on (2,1) -> 4 neighbours
-    - Step on (2,3) -> 1 neighbour
-    - Step on (3,3) -> 0 neighbours
+    - 1. Step on (0,0) -> 3 neighbours
+    - 2. Step on (0,3) -> 2 neighbours
+    - 3. Step on (2,1) -> 4 neighbours
+    - 4. Step on (2,3) -> 1 neighbour
+    - 5. Step on (3,3) -> 0 neighbours
 ```
 
 ### User story #4 - Mark the bombs around
