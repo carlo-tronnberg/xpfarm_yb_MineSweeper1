@@ -15,6 +15,15 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
             [0, 0],
           ],
         ],
+        [
+          3,
+          3,
+          [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0],
+          ],
+        ],
       ])(
         'When creating a Game Board of %i by %i, I should get %o',
         (width, height, gameBoard) => {
