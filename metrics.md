@@ -4,15 +4,15 @@ Result: SUCCESS
 
 Failed tests: 0
 
-Passed tests: 18
+Passed tests: 19
 
 ## Coverage ✅
 | Type | Total | Covered | Skipped | Percentage |
 |------|------:|--------:|--------:|------------|
-| lines | 54 | 54 | 0 | 100.00% |
-| statements | 56 | 56 | 0 | 100.00% |
-| functions | 17 | 17 | 0 | 100.00% |
-| branches | 16 | 16 | 0 | 100.00% |
+| lines | 69 | 69 | 0 | 100.00% |
+| statements | 75 | 75 | 0 | 100.00% |
+| functions | 19 | 19 | 0 | 100.00% |
+| branches | 22 | 22 | 0 | 100.00% |
 
 ## Complexity ✅
 Cyclomatic complexity: 0

@@ -3,6 +3,7 @@ class Game {
   SQUARE_CLEAR = ' ';
   GAME_RUNNING = 'running';
   GAME_OVER = 'Game Over';
+  GAME_WIN = 'You Win';
 
   constructor(width, height) {
     this.status = this.GAME_RUNNING;
@@ -62,11 +63,16 @@ class Game {
         this.setSquareValue(x, y, 'X');
         message = 'BOOM! - Game Over';
       } else {
-        this.status = this.GAME_RUNNING;
-        // Get number of neighboring bombs
         let value = this.getNeighbouringBombsCount(x, y);
         this.setSquareValue(x, y, value == 0 ? '_' : value);
-        message = this.getSquareValue(x, y) + ' bomb(s) around your square.';
+        if (this.winner()) {
+          this.showBombs();
+          this.status = this.GAME_WIN;
+          message = 'the land is cleared! GOOD JOB!';
+        } else {
+          this.status = this.GAME_RUNNING;
+          message = this.getSquareValue(x, y) + ' bomb(s) around your square.';
+        }
       }
     } else {
       message = 'This square is already set and cannot be changed';
@@ -118,10 +124,35 @@ class Game {
 
   markBomb(x, y) {
     this.setSquareValue(x, y, '*');
+    this.log('Square [' + x + ',' + y + '] flagged as bomb');
   }
 
-  /*unmarkBomb(x, y) {
+  unmarkBomb(x, y) {
     this.setSquareValue(x, y, ' ');
-  }*/
+    this.log('Square [' + x + ',' + y + '] unflagged as bomb');
+  }
+
+  winner() {
+    // If there no more blanks, then you're the winner
+    var isWinner = true;
+    for (var i = 0; i < this.gameBoard.length; i++) {
+      for (var j = 0; j < this.gameBoard[0].length; j++) {
+        if (this.gameBoard[i][j] == ' ' && this.bombBoard[i][j] != 1) {
+          isWinner = false;
+          break;
+        }
+      }
+    }
+    return isWinner;
+  }
+
+  showBombs() {
+    for (var i = 0; i < this.gameBoard.length; i++) {
+      for (let j = 0; j < this.gameBoard[i].length; j++) {
+        if (this.bombBoard[i][j] == 1 && this.gameBoard[i][j] != '*')
+          this.gameBoard[i][j] = 'X';
+      }
+    }
+  }
 }
 module.exports = { Game };
