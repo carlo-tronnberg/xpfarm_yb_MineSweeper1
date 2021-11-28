@@ -36,3 +36,4 @@
   - Scenario #2 🟢
   - Scenario #2 🔨 - break out createGameBoard function
   - Scenario #3 🔴 - get Game Board drawn as a formatted string
+  - Scenario #3 🟢
