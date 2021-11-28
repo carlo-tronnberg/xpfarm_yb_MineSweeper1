@@ -1,5 +1,4 @@
-function mineSweeper1(a, b) {
-  return a + b;
+class Game {
+  constructor() {}
 }
-module.exports = mineSweeper1;
-
+module.exports = { Game };
