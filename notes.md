@@ -31,3 +31,4 @@
   - Scenario #1 🔴 - 2x2
   - Scenario #1 🟢
   - Scenario #1 🔨
+  - Scenario #1 🟢 - 3x3
