@@ -121,6 +121,20 @@ So that I can try to avoid them
   Given the Game Board
   When stepping on a square without a bomb but having neighboring bomb(s)
   Then I want to see a count of neighboring bombs in the square
+
+    Bombs:
+    [
+      [0, 0, 0, 0],
+      [1, 1, 0, 0],
+      [1, 1, 0, 0],
+      [0, 1, 0, 1],
+    ]
+
+    - Step on (0,0) -> 3 neighbours
+    - Step on (0,3) -> 2 neighbours
+    - Step on (2,1) -> 4 neighbours
+    - Step on (2,3) -> 1 neighbour
+    - Step on (3,3) -> 0 neighbours
 ```
 
 ### User story #4 - Mark the bombs around
