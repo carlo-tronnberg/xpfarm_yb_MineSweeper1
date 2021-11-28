@@ -1,8 +1,6 @@
 class Game {
   constructor(width, height) {
-    this.gameBoard = Array(height)
-      .fill()
-      .map(() => Array(width).fill(0));
+    this.createGameBoard(width, height);
   }
   getBoard() {
     return this.gameBoard;
@@ -12,6 +10,11 @@ class Game {
   }
   getBombs() {
     return this.bombBoard;
+  }
+  createGameBoard(width, height) {
+    this.gameBoard = Array(height)
+      .fill()
+      .map(() => Array(width).fill(0));
   }
 }
 module.exports = { Game };
