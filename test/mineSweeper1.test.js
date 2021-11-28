@@ -94,7 +94,7 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
           [0, 1, 0, 1],
         ]);
         game.stepOnSquare(x, y);
-        expect(game.getGameBoardValue(x, y)).toBe(count);
+        expect(game.getSquareValue(x, y)).toBe(count);
       }
     );
   });

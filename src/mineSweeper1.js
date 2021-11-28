@@ -57,6 +57,8 @@ class Game {
     } else {
       this.status = this.GAME_RUNNING;
       this.log('No bomb here!');
+      // Get number of neighboring bombs
+      this.setSquareValue(x, y, this.getNeighbouringBombsCount(x, y));
     }
   }
 
@@ -78,7 +80,7 @@ class Game {
     return value >= min && value <= max;
   }
 
-  getGameBoardValue(x, y) {
+  getNeighbouringBombsCount(x, y) {
     // Get bomb count for the 8 neighboring squares (but only within the board)
     var count = 0;
     count += this.getBombAt(x - 1, y - 1);
@@ -92,6 +94,14 @@ class Game {
 
     console.log('BombsAt(%i,%i)=%i', x, y, count);
     return count;
+  }
+
+  setSquareValue(x, y, value) {
+    this.gameBoard[this.gameBoard[0].length - 1 - y][x] = value;
+  }
+
+  getSquareValue(x, y) {
+    return this.gameBoard[this.gameBoard[0].length - 1 - y][x];
   }
 }
 module.exports = { Game };
