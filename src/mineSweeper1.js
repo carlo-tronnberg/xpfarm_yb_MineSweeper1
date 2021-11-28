@@ -67,5 +67,9 @@ class Game {
   getBombAt(x, y) {
     return this.bombBoard[this.bombBoard[0].length - 1 - y][x];
   }
+
+  getGameBoardValue(x, y) {
+    return 3;
+  }
 }
 module.exports = { Game };
