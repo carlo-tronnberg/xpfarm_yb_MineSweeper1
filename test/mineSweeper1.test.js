@@ -31,6 +31,15 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
           expect(game.getBoard()).toEqual(gameBoard);
         }
       );
+
+      it('Given a Game Board width 3 and height 3\nWhen starting the game\nThen I want to create the empty Game Board and get it back as a string', () => {
+        let width = 3;
+        let height = 3;
+        let gameBoardString =
+          '+-+-+-+\n| | | |+-+-+-+| | | |+-+-+-+| | | |+-+-+-+';
+        const game = new Game(width, height);
+        expect(game.drawGameBoard()).toEqual(gameBoardString);
+      });
     });
     describe('Create the hidden Bombs Board, matching the Game Board', () => {
       it.each([
