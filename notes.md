@@ -48,3 +48,4 @@
   - Scenario #1 🔨 - Refactored test
   - Scenario #2 🔴 - Stepping on bomb
   - Scenario #2 🟢
+  - Scenario #2 🔴 - Stepping on [0,1]
