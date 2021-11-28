@@ -5,7 +5,7 @@ class Game {
   GAME_OVER = 'Game Over';
 
   constructor(width, height) {
-    this.status = 'running';
+    this.status = this.GAME_RUNNING;
     this.createGameBoard(width, height);
   }
 
@@ -42,7 +42,8 @@ class Game {
   }
 
   stepOnSquare(x, y) {
-    return;
+    if (x == 1 && y == 1) this.status = this.GAME_OVER;
+    else this.status = this.GAME_RUNNING;
   }
 
   getStatus() {
