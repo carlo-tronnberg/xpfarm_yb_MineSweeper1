@@ -56,14 +56,25 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
     });
   });
 
-  describe('US2 Game Over - Lose the game by stepping on a bomb', () => {
+  describe('US2 Allow stepping into a square', () => {
+    it('Given the Game Board,    When stepping on a square,    Then the game should know whether I am allowed to do so', () => {
+      const game = new Game(3, 3);
+      expect(game.allowOperation(0, 0)).toEqual(true);
+      game.setSquareValue(0, 0, '_');
+      expect(game.allowOperation(0, 0)).toEqual(false);
+      game.setSquareValue(0, 0, '_');
+      expect(game.allowOperation(0, 0)).toEqual(false);
+    });
+  });
+
+  describe('US3 Game Over - Lose the game by stepping on a bomb', () => {
     it.each([
       [0, 0, GAME_RUNNING],
       [1, 1, GAME_OVER],
       [0, 1, GAME_OVER],
       [0, 2, GAME_RUNNING],
     ])(
-      'Given the 3x3 Game Board,  When stepping on a square without a bomb (%i,%i),  Then the game will be %s',
+      'Given the 3x3 Game Board,  When stepping on the square (%i,%i),  Then the game will be %s',
       (x, y, status) => {
         const game = new Game(3, 3);
         game.setBombs([
@@ -71,7 +82,10 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
           [1, 1, 0], // |
           [0, 1, 0], //  ——▶
         ]);
+        expect(game.allowOperation(x, y)).toEqual(true);
         game.stepOnSquare(x, y);
+        game.stepOnSquare(x, y);
+        expect(game.allowOperation(x, y)).toEqual(false);
         expect(game.getStatus()).toEqual(status);
       }
     );
@@ -83,7 +97,7 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
       [0, 3, 2],
       [2, 1, 4],
       [2, 3, 1],
-      [3, 3, 0],
+      [3, 3, '_'],
     ])(
       'Given the Game Board,    When stepping on a square without a bomb (%i,%i) but having neighboring bomb(s),    Then I should get the count of %i neighboring bombs in the square',
       (x, y, count) => {

@@ -48,17 +48,28 @@ class Game {
     gameBoardString += '+-'.repeat(this.gameBoard[0].length) + '+';
     return gameBoardString;
   }
+  allowOperation(x, y) {
+    return (
+      this.getSquareValue(x, y) === ' ' || this.getSquareValue(x, y) === '*'
+    );
+  }
 
   stepOnSquare(x, y) {
-    let message = '';
-    if (this.getBombAt(x, y) == 1) {
-      this.status = this.GAME_OVER;
-      message = 'BOOM! - Game Over';
+    var message = '';
+    if (this.allowOperation(x, y)) {
+      if (this.getBombAt(x, y) == 1) {
+        this.status = this.GAME_OVER;
+        this.setSquareValue(x, y, 'X');
+        message = 'BOOM! - Game Over';
+      } else {
+        this.status = this.GAME_RUNNING;
+        // Get number of neighboring bombs
+        let value = this.getNeighbouringBombsCount(x, y);
+        this.setSquareValue(x, y, value == 0 ? '_' : value);
+        message = this.getSquareValue(x, y) + ' bomb(s) around your square.';
+      }
     } else {
-      this.status = this.GAME_RUNNING;
-      // Get number of neighboring bombs
-      this.setSquareValue(x, y, this.getNeighbouringBombsCount(x, y));
-      message = this.getSquareValue(x, y) + ' bomb(s) around your square.';
+      message = 'This square is already set and cannot be changed';
     }
     this.log(message);
   }
@@ -97,12 +108,20 @@ class Game {
   }
 
   setSquareValue(x, y, value) {
-    this.gameBoard[this.gameBoard[0].length - 1 - y][x] = value;
-    //this.log(x + ', ' + y + ', value: ' + this.getSquareValue(x, y));
+    if (this.allowOperation(x, y))
+      this.gameBoard[this.gameBoard[0].length - 1 - y][x] = value;
   }
 
   getSquareValue(x, y) {
     return this.gameBoard[this.gameBoard[0].length - 1 - y][x];
   }
+
+  markBomb(x, y) {
+    this.setSquareValue(x, y, '*');
+  }
+
+  /*unmarkBomb(x, y) {
+    this.setSquareValue(x, y, ' ');
+  }*/
 }
 module.exports = { Game };
