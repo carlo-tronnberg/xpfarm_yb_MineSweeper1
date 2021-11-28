@@ -42,3 +42,4 @@
 - User story #2 🚧
   - Scenario #1 🔴 - Stepping on a clear square
   - Scenario #1 🟢
+  - Scenario #1 🔴 - Added Status check test
