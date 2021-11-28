@@ -24,14 +24,13 @@ class Game {
   createGameBoard(width, height) {
     this.gameBoard = Array(height)
       .fill()
-      .map(() => Array(width).fill(0));
-    console.log(this.drawGameBoard());
+      .map(() => Array(width).fill(' '));
     this.log('Game created');
   }
 
   log(message) {
     console.log(
-      '[Sandbox %ix%i] %s',
+      this.drawGameBoard() + '\n\n[Sandbox %ix%i] %s',
       this.gameBoard[0].length,
       this.gameBoard.length,
       message
@@ -42,7 +41,7 @@ class Game {
     for (var i = 0; i < this.gameBoard.length; i++) {
       gameBoardString += '+-'.repeat(this.gameBoard[0].length) + '+\n|';
       for (let j = 0; j < this.gameBoard[i].length; j++) {
-        gameBoardString += ' |';
+        gameBoardString += this.gameBoard[i][j] + '|';
       }
       gameBoardString += '\n';
     }
@@ -51,15 +50,17 @@ class Game {
   }
 
   stepOnSquare(x, y) {
+    let message = '';
     if (this.getBombAt(x, y) == 1) {
       this.status = this.GAME_OVER;
-      this.log('BOOM! - Game Over');
+      message = 'BOOM! - Game Over';
     } else {
       this.status = this.GAME_RUNNING;
-      this.log('No bomb here!');
       // Get number of neighboring bombs
       this.setSquareValue(x, y, this.getNeighbouringBombsCount(x, y));
+      message = this.getSquareValue(x, y) + ' bomb(s) around your square.';
     }
+    this.log(message);
   }
 
   getStatus() {
@@ -92,12 +93,12 @@ class Game {
     count += this.getBombAt(x + 1, y);
     count += this.getBombAt(x + 1, y + 1);
 
-    console.log('BombsAt(%i,%i)=%i', x, y, count);
     return count;
   }
 
   setSquareValue(x, y, value) {
     this.gameBoard[this.gameBoard[0].length - 1 - y][x] = value;
+    //this.log(x + ', ' + y + ', value: ' + this.getSquareValue(x, y));
   }
 
   getSquareValue(x, y) {

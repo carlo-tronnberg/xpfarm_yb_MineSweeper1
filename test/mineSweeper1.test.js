@@ -7,24 +7,24 @@ const GAME_OVER = 'Game Over';
 describe("I want to play a game of Mine Sweeper where I'll win if I clear the board without stepping on a bomb", () => {
   describe('US1 Game Board Creation', () => {
     it.each([
-      [1, 1, [[0]]],
-      [2, 1, [[0, 0]]],
-      [1, 2, [[0], [0]]],
+      [1, 1, [[' ']]],
+      [2, 1, [[' ', ' ']]],
+      [1, 2, [[' '], [' ']]],
       [
         2,
         2,
         [
-          [0, 0],
-          [0, 0],
+          [' ', ' '],
+          [' ', ' '],
         ],
       ],
       [
         3,
         3,
         [
-          [0, 0, 0],
-          [0, 0, 0],
-          [0, 0, 0],
+          [' ', ' ', ' '],
+          [' ', ' ', ' '],
+          [' ', ' ', ' '],
         ],
       ],
     ])(
