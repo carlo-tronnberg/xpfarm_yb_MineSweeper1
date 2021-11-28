@@ -19,6 +19,8 @@ class Game {
     this.gameBoard = Array(height)
       .fill()
       .map(() => Array(width).fill(0));
+    console.log(this.drawGameBoard());
+    console.log('[Sandbox ' + width + 'x' + height + '] Game created');
   }
   drawGameBoard() {
     let gameBoardString = '';
