@@ -99,7 +99,7 @@ So that I can make a step
   Then the game should know whether I am allowed to do so
 ```
 
-### User story #2 - Game Over - Lose the game by stepping on a bomb
+### User story #3 - Game Over - Lose the game by stepping on a bomb
 
 ```
 As a gamer
@@ -131,7 +131,7 @@ So that I can try again with a new game
   Then it will be Game Over
 ```
 
-### User story #3 - Get the number of neighbouring bombs when stepping on a clean square
+### User story #4 - Get the number of neighbouring bombs when stepping on a clean square
 
 ```
 As a gamer
@@ -161,7 +161,7 @@ So that I can try to avoid them
     - 5. Step on (3,3) -> 0 neighbours
 ```
 
-### User story #4 - Mark the bombs around
+### User story #5 - Mark the bombs around
 
 ```
 As a gamer
@@ -177,7 +177,7 @@ So that I can work on my winning moves
   Then I want to be able to mark it with a '*'
 ```
 
-### User story #5 - Game Victory
+### User story #6 - Game Victory
 
 ```
 As a gamer
@@ -193,7 +193,7 @@ So that I can feel proud of my achievement
   Then I want to win the Game
 ```
 
-### User story #6 - Massive cleaning and victory
+### User story #7 - Massive cleaning and victory
 
 ```
 As a gamer
