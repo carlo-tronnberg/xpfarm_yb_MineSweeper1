@@ -2,7 +2,7 @@ const { Game } = require('../src/mineSweeper1');
 
 describe("I want to play a game of Mine Sweeper where I'll win if I clear the board without stepping on a bomb", () => {
   describe('US1 Game Board Creation', () => {
-    describe('Create the empty Game Board', () => {
+    describe('Given a Game Board width and height,    When starting the game,    Then I want to create the empty Game Board', () => {
       it.each([
         [1, 1, [[0]]],
         [2, 1, [[0, 0]]],
@@ -32,11 +32,26 @@ describe("I want to play a game of Mine Sweeper where I'll win if I clear the bo
         }
       );
 
-      it('Given a Game Board width 3 and height 3\nWhen starting the game\nThen I want to create the empty Game Board and get it back as a string', () => {
+      it('Given a Game Board width 3 and height 3,    When starting the game,    Then I want to create the hidden Bombs Board, matching the Game Board dimension', () => {
+        let width = 3;
+        let height = 3;
+        let bombBoard = [
+          [0, 0, 0],
+          [1, 1, 0],
+          [0, 1, 0],
+        ];
+        const game = new Game(width, height);
+        game.setBombs(bombBoard);
+        expect(game.getBombs()).toEqual(bombBoard);
+        /*    game.stepOn(0, 0);
+        expect(game.getStatus()).toEqual('running');*/
+      });
+
+      it('Given a Game Board width 3 and height 3,    When starting the game,    Then I want to create the empty Game Board and get it back as a string', () => {
         let width = 3;
         let height = 3;
         let gameBoardString =
-          '+-+-+-+\n| | | |+-+-+-+| | | |+-+-+-+| | | |+-+-+-+';
+          '+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+';
         const game = new Game(width, height);
         expect(game.drawGameBoard()).toEqual(gameBoardString);
       });

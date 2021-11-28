@@ -20,5 +20,17 @@ class Game {
       .fill()
       .map(() => Array(width).fill(0));
   }
+  drawGameBoard() {
+    let gameBoardString = '';
+    for (var i = 0; i < this.gameBoard.length; i++) {
+      gameBoardString += '+-'.repeat(this.gameBoard[0].length) + '+\n|';
+      for (let j = 0; j < this.gameBoard[i].length; j++) {
+        gameBoardString += ' |';
+      }
+      gameBoardString += '\n';
+    }
+    gameBoardString += '+-'.repeat(this.gameBoard[0].length) + '+';
+    return gameBoardString;
+  }
 }
 module.exports = { Game };
