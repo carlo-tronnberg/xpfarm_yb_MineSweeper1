@@ -45,3 +45,4 @@
   - Scenario #1 🔴 - Added Status check test
   - Scenario #1 🟢
   - Scenario #1 🔴 - Stepping on bomb
+  - Scenario #1 🟢
