@@ -28,3 +28,4 @@
   - Scenario #1 🟢
   - Scenario #1 🔴 - 2x1
   - Scenario #1 🟢
+  - Scenario #1 🔴 - 2x2
