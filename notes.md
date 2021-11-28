@@ -37,3 +37,7 @@
   - Scenario #2 🔨 - break out createGameBoard function
   - Scenario #3 🔴 - get Game Board drawn as a formatted string
   - Scenario #3 🟢
+- User story #2 🚧
+### Pomodoro 🍅 2
+- User story #2 🚧
+  - Scenario #1 🔴 - Stepping on a clear square

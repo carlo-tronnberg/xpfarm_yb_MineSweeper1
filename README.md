@@ -75,6 +75,14 @@ So that I play the game
   Then I want to create the hidden Bombs Board, matching the Game Board dimension
 ```
 
+#### Scenario #3
+
+```
+  Given a Game Board width and height
+  When starting the game
+  Then I want to create the empty Game Board and get it back as a string
+```
+
 ### User story #2 - Game Over - Lose the game by stepping on a bomb
 
 ```
@@ -96,7 +104,7 @@ So that I can try again with a new game
 ```
   Given the Game Board
   When stepping on a square having a bomb
-  Then I will lose the game
+  Then it will be Game Over
 ```
 
 ### User story #3 - Get the number of neighbouring bombs when stepping on a clean square
