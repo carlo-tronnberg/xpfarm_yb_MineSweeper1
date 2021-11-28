@@ -65,18 +65,33 @@ class Game {
   }
 
   getBombAt(x, y) {
-    return this.bombBoard[this.bombBoard[0].length - 1 - y][x];
+    if (
+      this.valueIsBetween(x, 0, this.gameBoard[0].length - 1) &&
+      this.valueIsBetween(y, 0, this.gameBoard.length - 1)
+    ) {
+      return this.bombBoard[this.bombBoard[0].length - 1 - y][x];
+    }
+    return 0;
+  }
+
+  valueIsBetween(value, min, max) {
+    return value >= min && value <= max;
   }
 
   getGameBoardValue(x, y) {
-    if (x == 0 && y == 0) {
-      return 3;
-    }
-    if (x == 2 && y == 1) {
-      return 4;
-    } else {
-      return 2;
-    }
+    // Get bomb count for the 8 neighboring squares (but only within the board)
+    var count = 0;
+    count += this.getBombAt(x - 1, y - 1);
+    count += this.getBombAt(x - 1, y);
+    count += this.getBombAt(x - 1, y + 1);
+    count += this.getBombAt(x, y - 1);
+    count += this.getBombAt(x, y + 1);
+    count += this.getBombAt(x + 1, y - 1);
+    count += this.getBombAt(x + 1, y);
+    count += this.getBombAt(x + 1, y + 1);
+
+    console.log('BombsAt(%i,%i)=%i', x, y, count);
+    return count;
   }
 }
 module.exports = { Game };
